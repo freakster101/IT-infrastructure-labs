@@ -283,31 +283,122 @@ The lab demonstrated real-world Windows file sharing administration while reinfo
 
 ---
 
-Screenshots
 
-Windows IP Configuration
+## Screenshots
 
-"Windows IP Configuration" (images/01-ipconfig.jpeg)
+### 1. Windows Host IP Configuration
+Verified the Windows host IP address used for SMB connectivity.
 
-Share Permission Configuration
+![Windows Host IP Configuration](images/01-ipconfig.jpg)
 
-"Share Permission Configuration" (images/02-share-permission-admin.jpeg)
+---
 
-NTFS Permission Configuration
+### 2. Honor200Pro Share Permission
+Configured share-level permissions for the Honor200Pro SMB account.
 
-"NTFS Permission" (images/03-ntfs-permission.jpeg)
+![Honor200Pro Share Permission](images/02-share-permission-honor.jpg)
 
-OnePlus Share Permission
+---
 
-"OnePlus Share Permission" (images/04-share-permission-oneplus.jpeg)
+### 3. OnePlus Share Permission
+Configured share-level permissions for the OnePlus SMB account.
 
-Read-Only Share Configuration
+![OnePlus Share Permission](images/03-share-permission-oneplus.jpg)
 
-"Read Only Share Permission" (images/05-share-permission-readonly.jpeg)
+---
 
-Android SMB Share Access
+### 4. SharedReadOnly Share Configuration
+Created and configured the SharedReadOnly SMB share.
 
-"Android SMB Share Access" (images/06-android-share-access.jpeg)
-Android SMB Login
+![SharedReadOnly Configuration](images/04-share-readonly.jpg)
 
-"Android SMB Login" (images/07-android-smb-login.jpeg)
+---
+
+### 5. SharedReadOnly Access Validation
+Validated read-only permissions for authorized users.
+
+![SharedReadOnly Validation](images/05-share-readonly-validation.jpg)
+
+---
+
+### 6. Android SMB Share Enumeration
+Enumerated available SMB shares from Android.
+
+![Android Share Enumeration](images/06-android-share-enumeration.jpg)
+
+---
+
+### 7. Android SMB Share Access
+Successfully accessed SMB shares from Android.
+
+![Android SMB Share Access](images/07-android-share-access.jpg)
+
+---
+
+### 8. Shared Files Verification
+Verified visibility and accessibility of shared files.
+
+![Shared Files Verification](images/08-shared-files.jpg)
+
+---
+
+### 9. CX File Explorer SMB Setup
+Configured SMB connectivity using CX File Explorer.
+
+![CX File Explorer SMB Setup](images/09-cxfileexplorer-smb-setup.jpg)
+
+---
+
+### 10. SMB Login Configuration
+Configured SMB authentication credentials on Android.
+
+![SMB Login Configuration](images/10-smb-login-configuration.jpg)
+
+---
+
+### 11. NTFS Permission Configuration
+Configured NTFS permissions to enforce least-privilege access.
+
+![NTFS Permission Configuration](images/11-ntfs-permission.jpeg)
+
+---
+
+### 12. Administrator Permission Review
+Verified effective share permissions from the administrator perspective.
+
+![Administrator Permission Review](images/12-admin-permission-review.jpg)
+
+---
+
+### 13. SMB Client Connection
+Established SMB connectivity from Linux using smbclient.
+
+![SMB Client Connection](images/13-smbclient-connect.jpg)
+
+---
+
+### 14. SMB Directory Listing
+Enumerated files and directories on the remote SMB share.
+
+![SMB Directory Listing](images/14-smbclient-list-files.jpg)
+
+---
+
+### 15. SMB Navigation
+Navigated through directories using smbclient commands.
+
+![SMB Navigation](images/15-smbclient-navigation.jpg)
+
+---
+
+### 16. SMB File Operations
+Tested file upload, download, and management operations.
+
+![SMB File Operations](images/16-smbclient-file-operations.jpg)
+
+---
+
+### 17. SMB Access Validation
+Validated authentication and authorization using assigned credentials.
+
+![SMB Access Validation](images/17-smbclient-access-validation.jpg)
