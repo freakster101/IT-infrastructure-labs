@@ -1,14 +1,14 @@
-Windows SMB File Sharing, Authentication & Access Control Lab
+# Windows SMB File Sharing, Authentication & Access Control Lab
 
-Project Summary
+## Project Summary
 
 Designed and implemented a secure SMB file-sharing environment on Windows 11 with access validation from Linux and Android clients.
 
-This lab focused on SMB configuration, authentication, authorization, NTFS permissions, Share permissions, and least-privilege access control. The environment was tested from multiple client platforms to verify secure access and proper permission enforcement.
+This lab focused on SMB configuration, authentication, authorization, NTFS permissions, Share permissions, and least-privilege access control.
 
 ---
 
-Scenario
+## Scenario
 
 A small organization requires centralized file sharing while ensuring users can access only the resources they are authorized to use.
 
@@ -16,7 +16,7 @@ The objective of this lab was to deploy a Windows-based SMB file-sharing solutio
 
 ---
 
-Objectives
+## Objectives
 
 - Configure SMB file shares on Windows 11
 - Create user-specific access controls
@@ -30,19 +30,21 @@ Objectives
 
 ---
 
-Environment
+## Environment
 
-Server
+### Server
 
-- Windows 11
+Windows 11
 
-Clients
+### Clients
 
-- Linux Mint Virtual Machine
-- Honor 200 Pro (Android)
-- OnePlus 8T (Android)
+Linux Mint Virtual Machine
 
-Technologies Used
+Honor 200 Pro (Android)
+
+OnePlus 8T (Android)
+
+### Technologies Used
 
 - SMB/CIFS
 - Windows File Sharing
@@ -55,25 +57,25 @@ Technologies Used
 
 ---
 
-Lab Topology
-
+```text
 Windows 11 Host (192.168.59.187)
-        │
- ┌──────┼─────────────┐
- │      │             │
-Honor   OnePlus    Linux Mint
+        |
+        |--- Honor 200 Pro Android
+        |--- OnePlus 8T Android
+        |--- Linux Mint VM
 
 ---
 
-User Accounts
+## User Accounts
 
-Username| Purpose| Privilege Level
-Honor200Pro| SMB Access| Standard User
-OnePlus| SMB Access| Standard User
+| Username    | Purpose    | Privilege Level |
+| ----------- | ---------- | --------------- |
+| Honor200Pro | SMB Access | Standard User   |
+| OnePlus     | SMB Access | Standard User   |
 
 ---
 
-Share Structure
+## Share Structure
 
 LabShare/
 ├── Honor Data
@@ -82,41 +84,50 @@ LabShare/
 
 ---
 
-Access Control Matrix
+## Access Control Matrix
 
-User| Resource| Permission
-Honor200Pro| Honor Data| Read/Write
-OnePlus| OnePlus Data| Read/Write
-Honor200Pro| SharedReadOnly| Read Only
-OnePlus| SharedReadOnly| Read Only
+| User        | Resource       | Permission |
+| ----------- | -------------- | ---------- |
+| Honor200Pro | Honor Data     | Read/Write |
+| OnePlus     | OnePlus Data   | Read/Write |
+| Honor200Pro | SharedReadOnly | Read Only  |
+| OnePlus     | SharedReadOnly | Read Only  |
 
----
-
-Verification Tests
-
-Test| Expected Result| Outcome
-Honor200Pro access to Honor Data| Read/Write| Pass
-OnePlus access to OnePlus Data| Read/Write| Pass
-Honor200Pro access to SharedReadOnly| Read Only| Pass
-OnePlus access to SharedReadOnly| Read Only| Pass
-Invalid credentials| Access Denied| Pass
-Share enumeration from Linux| Shares Visible| Pass
-Android SMB connection| Successful| Pass
 
 ---
 
-SMB Client Commands
+## Verification Tests
 
-Enumerate Available Shares
+| Test                                 | Expected Result | Outcome |
+| ------------------------------------ | --------------- | ------- |
+| Honor200Pro access to Honor Data     | Read/Write      | Pass    |
+| OnePlus access to OnePlus Data       | Read/Write      | Pass    |
+| Honor200Pro access to SharedReadOnly | Read Only       | Pass    |
+| OnePlus access to SharedReadOnly     | Read Only       | Pass    |
+| Invalid credentials                  | Access Denied   | Pass    |
+| Share enumeration from Linux         | Shares Visible  | Pass    |
+| Android SMB connection               | Successful      | Pass    |
 
+
+---
+
+## SMB Client Commands
+
+### Enumerate Available Shares
+
+```bash
 smbclient -L //192.168.59.187 -U Honor200Pro
+```
 
-Connect to a Share
+### Connect to a Share
 
+```bash
 smbclient "//192.168.59.187/Honor Data" -U Honor200Pro
+```
 
-Common SMB Operations
+### Common SMB Operations
 
+```bash
 ls
 pwd
 cd
@@ -126,32 +137,33 @@ get
 del
 help
 exit
+```
 
 ---
 
-Technical Skills Demonstrated
+## Technical Skills Demonstrated
 
-Windows Administration
+### Windows Administration
 
 - Local User Management
 - SMB Share Configuration
 - Share Permission Management
 - NTFS Permission Configuration
 
-Networking
+### Networking
 
 - SMB Protocol Operation
 - Client/Server Communication
 - Authentication Testing
 - Connectivity Validation
 
-Linux Administration
+### Linux Administration
 
 - smbclient Usage
 - Remote File Operations
 - SMB Troubleshooting
 
-Security
+### Security
 
 - Authentication
 - Authorization
@@ -161,7 +173,7 @@ Security
 
 ---
 
-Security Observations
+## Security Observations
 
 - SMB access remains functional even when Network Discovery is disabled.
 - SMB services remain available until the underlying service is stopped.
@@ -173,100 +185,160 @@ Security Observations
 
 ---
 
-Troubleshooting
+## Troubleshooting
 
-Issues Encountered
+### Issue
 
-- Authentication failures due to incorrect credentials
-- Incorrect NTFS permission assignments
-- Permission inheritance confusion
-- SMB behavior after disabling Network Discovery
-- Linux path and syntax errors during smbclient usage
+Authentication failures due to incorrect credentials.
 
-Resolution Steps
+### Investigation
 
 - Verified account credentials
 - Reviewed NTFS permission entries
-- Validated Share Permissions
+- Checked Share Permissions
 - Tested connectivity using smbclient
-- Compared GUI behavior with command-line tools
-- Re-tested access after permission modifications
+
+### Root Cause
+
+Incorrect user credentials.
+
+### Resolution
+
+Corrected credentials and validated successful authentication.
 
 ---
 
-Screenshots
+### Issue
 
-1. Windows Host IP Configuration
+Users unable to access intended resources.
 
-"Windows Host IP Configuration" (images/01-ipconfig.jpg)
+### Investigation
 
-2. Honor200Pro Share Permission
+- Reviewed NTFS permissions
+- Reviewed Share permissions
+- Tested effective permissions
 
-"Honor200Pro Share Permission" (images/02-share-permission-honor.jpg)
+### Root Cause
 
-3. OnePlus Share Permission
+Incorrect permission assignments.
 
-"OnePlus Share Permission" (images/03-share-permission-oneplus.jpg)
+### Resolution
 
-4. SharedReadOnly Share Configuration
-
-"SharedReadOnly Configuration" (images/04-share-readonly.jpg)
-
-5. SharedReadOnly Access Validation
-
-"SharedReadOnly Validation" (images/05-share-readonly-validation.jpg)
-
-6. Android SMB Share Enumeration
-
-"Android Share Enumeration" (images/06-android-share-enumeration.jpg)
-
-7. Android SMB Share Access
-
-"Android SMB Share Access" (images/07-android-share-access.jpg)
-
-8. Shared Files Verification
-
-"Shared Files Verification" (images/08-shared-files.jpg)
-
-9. CX File Explorer SMB Setup
-
-"CX File Explorer SMB Setup" (images/09-cxfileexplorer-smb-setup.jpg)
-
-10. SMB Login Configuration
-
-"SMB Login Configuration" (images/10-smb-login-configuration.jpg)
-
-11. NTFS Permission Configuration
-
-"NTFS Permission Configuration" (images/11-ntfs-permission.jpeg)
-
-12. Administrator Permission Review
-
-"Administrator Permission Review" (images/12-admin-permission-review.jpg)
-
-13. SMB Client Connection
-
-"SMB Client Connection" (images/13-smbclient-connect.jpg)
-
-14. SMB Directory Listing
-
-"SMB Directory Listing" (images/14-smbclient-list-files.jpg)
-
-15. SMB Navigation
-
-"SMB Navigation" (images/15-smbclient-navigation.jpg)
-
-16. SMB File Operations
-
-"SMB File Operations" (images/16-smbclient-file-operations.jpg)
-
-17. SMB Access Validation
-
-"SMB Access Validation" (images/17-smbclient-access-validation.jpg)
+Adjusted NTFS and Share permissions and re-tested access.
 
 ---
 
-Lessons Learned
+### Issue
+
+Confusion caused by permission inheritance.
+
+### Investigation
+
+- Examined inherited permissions
+- Compared effective access results
+
+### Root Cause
+
+Inherited permissions affecting expected behavior.
+
+### Resolution
+
+Reviewed inheritance settings and validated effective permissions.
+
+---
+
+### Issue
+
+Linux smbclient path and syntax errors.
+
+### Investigation
+
+- Tested alternate command syntax
+- Verified share names
+
+### Root Cause
+
+Incorrect smbclient command formatting.
+
+### Resolution
+
+Corrected command syntax and validated connectivity.
+
+---
+
+## Screenshots
+
+### 1. Windows Host IP Configuration
+
+images/01-ipconfig.jpg
+
+### 2. Honor200Pro Share Permission
+
+images/02-share-permission-honor.jpg
+
+### 3. OnePlus Share Permission
+
+images/03-share-permission-oneplus.jpg
+
+### 4. SharedReadOnly Share Configuration
+
+images/04-share-readonly.jpg
+
+### 5. SharedReadOnly Access Validation
+
+images/05-share-readonly-validation.jpg
+
+### 6. Android SMB Share Enumeration
+
+images/06-android-share-enumeration.jpg
+
+### 7. Android SMB Share Access
+
+images/07-android-share-access.jpg
+
+### 8. Shared Files Verification
+
+images/08-shared-files.jpg
+
+### 9. CX File Explorer SMB Setup
+
+images/09-cxfileexplorer-smb-setup.jpg
+
+### 10. SMB Login Configuration
+
+images/10-smb-login-configuration.jpg
+
+### 11. NTFS Permission Configuration
+
+images/11-ntfs-permission.jpeg
+
+### 12. Administrator Permission Review
+
+images/12-admin-permission-review.jpg
+
+### 13. SMB Client Connection
+
+images/13-smbclient-connect.jpg
+
+### 14. SMB Directory Listing
+
+images/14-smbclient-list-files.jpg
+
+### 15. SMB Navigation
+
+images/15-smbclient-navigation.jpg
+
+### 16. SMB File Operations
+
+images/16-smbclient-file-operations.jpg
+
+### 17. SMB Access Validation
+
+images/17-smbclient-access-validation.jpg
+
+---
+
+## Lessons Learned
 
 - SMB authentication and authorization are separate processes.
 - Share Permissions and NTFS Permissions must both be considered when designing access controls.
@@ -278,7 +350,7 @@ Lessons Learned
 
 ---
 
-Result
+## Result
 
 Successfully deployed and validated a Windows-based SMB file-sharing solution using user-specific access controls and secure permission management.
 
