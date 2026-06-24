@@ -1,18 +1,41 @@
 # Windows SMB File Sharing, Authentication & Access Control Lab
 
-## Project Summary
+# Windows SMB File Sharing, Authentication & Access Control Lab
 
-Designed and implemented a secure SMB file-sharing environment on Windows 11 with access validation from Linux and Android clients.
+![Windows](https://img.shields.io/badge/Platform-Windows_11-blue)
+![SMB](https://img.shields.io/badge/Protocol-SMB-green)
+![Linux](https://img.shields.io/badge/Tested-Linux-orange)
+![Android](https://img.shields.io/badge/Tested-Android-brightgreen)
 
-This lab focused on SMB configuration, authentication, authorization, NTFS permissions, Share permissions, and least-privilege access control.
+## Overview
 
----
+This project demonstrates the deployment and validation of a Windows SMB file-sharing environment using user-specific access controls, NTFS permissions, Share permissions, and cross-platform client access from Linux and Android devices.
 
-## Scenario
+Key focus areas:
 
-A small organization requires centralized file sharing while ensuring users can access only the resources they are authorized to use.
+- SMB Administration
+- Authentication & Authorization
+- NTFS Permissions
+- Share Permissions
+- Access Control Design
+- Linux SMB Client Operations
+- Cross-Platform Connectivity
+- Infrastructure Troubleshooting
 
-The objective of this lab was to deploy a Windows-based SMB file-sharing solution that supports user-specific access controls, shared resources, and cross-platform connectivity while maintaining proper security practices.
+## Overview
+
+This project demonstrates the deployment and validation of a Windows SMB file-sharing environment using user-specific access controls, NTFS permissions, Share permissions, and cross-platform client access from Linux and Android devices.
+
+Key focus areas:
+
+- SMB Administration
+- Authentication & Authorization
+- NTFS Permissions
+- Share Permissions
+- Access Control Design
+- Linux SMB Client Operations
+- Cross-Platform Connectivity
+- Infrastructure Troubleshooting
 
 ---
 
@@ -34,15 +57,13 @@ The objective of this lab was to deploy a Windows-based SMB file-sharing solutio
 
 ### Server
 
-Windows 11
+- Windows 11
 
 ### Clients
 
-Linux Mint Virtual Machine
-
-Honor 200 Pro (Android)
-
-OnePlus 8T (Android)
+- Linux Mint Virtual Machine
+- Honor 200 Pro (Android)
+- OnePlus 8T (Android)
 
 ### Technologies Used
 
@@ -56,14 +77,14 @@ OnePlus 8T (Android)
 - CX File Explorer
 
 ---
-
+## Lab Topology
 ```text
 Windows 11 Host (192.168.59.187)
         |
         |--- Honor 200 Pro Android
         |--- OnePlus 8T Android
         |--- Linux Mint VM
-
+```
 ---
 
 ## User Accounts
@@ -77,10 +98,12 @@ Windows 11 Host (192.168.59.187)
 
 ## Share Structure
 
+```text
 LabShare/
 ├── Honor Data
 ├── OnePlus Data
 └── SharedReadOnly
+```
 
 ---
 
@@ -108,6 +131,11 @@ LabShare/
 | Share enumeration from Linux         | Shares Visible  | Pass    |
 | Android SMB connection               | Successful      | Pass    |
 
+---
+
+### Outcome
+
+All authentication, authorization, and access-control tests passed successfully. Cross-platform SMB access was validated from Linux Mint and Android clients while maintaining the intended permission boundaries.
 
 ---
 
@@ -138,38 +166,6 @@ del
 help
 exit
 ```
-
----
-
-## Technical Skills Demonstrated
-
-### Windows Administration
-
-- Local User Management
-- SMB Share Configuration
-- Share Permission Management
-- NTFS Permission Configuration
-
-### Networking
-
-- SMB Protocol Operation
-- Client/Server Communication
-- Authentication Testing
-- Connectivity Validation
-
-### Linux Administration
-
-- smbclient Usage
-- Remote File Operations
-- SMB Troubleshooting
-
-### Security
-
-- Authentication
-- Authorization
-- Least Privilege Access
-- Access Control Validation
-- Permission Inheritance Analysis
 
 ---
 
@@ -270,71 +266,103 @@ Corrected command syntax and validated connectivity.
 
 ### 1. Windows Host IP Configuration
 
-images/01-ipconfig.jpg
+![Windows Host IP Configuration](images/01-ipconfig.jpg)
+
+---
 
 ### 2. Honor200Pro Share Permission
 
-images/02-share-permission-honor.jpg
+![Honor200Pro Share Permission](images/02-share-permission-honor.jpg)
+
+---
 
 ### 3. OnePlus Share Permission
 
-images/03-share-permission-oneplus.jpg
+![OnePlus Share Permission](images/03-share-permission-oneplus.jpg)
+
+---
 
 ### 4. SharedReadOnly Share Configuration
 
-images/04-share-readonly.jpg
+![SharedReadOnly Share Configuration](images/04-share-readonly.jpg)
+
+---
 
 ### 5. SharedReadOnly Access Validation
 
-images/05-share-readonly-validation.jpg
+![SharedReadOnly Access Validation](images/05-share-readonly-validation.jpg)
+
+---
 
 ### 6. Android SMB Share Enumeration
 
-images/06-android-share-enumeration.jpg
+![Android SMB Share Enumeration](images/06-android-share-enumeration.jpg)
+
+---
 
 ### 7. Android SMB Share Access
 
-images/07-android-share-access.jpg
+![Android SMB Share Access](images/07-android-share-access.jpg)
+
+---
 
 ### 8. Shared Files Verification
 
-images/08-shared-files.jpg
+![Shared Files Verification](images/08-shared-files.jpg)
+
+---
 
 ### 9. CX File Explorer SMB Setup
 
-images/09-cxfileexplorer-smb-setup.jpg
+![CX File Explorer SMB Setup](images/09-cxfileexplorer-smb-setup.jpg)
+
+---
 
 ### 10. SMB Login Configuration
 
-images/10-smb-login-configuration.jpg
+![SMB Login Configuration](images/10-smb-login-configuration.jpg)
+
+---
 
 ### 11. NTFS Permission Configuration
 
-images/11-ntfs-permission.jpeg
+![NTFS Permission Configuration](images/11-ntfs-permission.jpeg)
+
+---
 
 ### 12. Administrator Permission Review
 
-images/12-admin-permission-review.jpg
+![Administrator Permission Review](images/12-admin-permission-review.jpg)
+
+---
 
 ### 13. SMB Client Connection
 
-images/13-smbclient-connect.jpg
+![SMB Client Connection](images/13-smbclient-connect.jpg)
+
+---
 
 ### 14. SMB Directory Listing
 
-images/14-smbclient-list-files.jpg
+![SMB Directory Listing](images/14-smbclient-list-files.jpg)
+
+---
 
 ### 15. SMB Navigation
 
-images/15-smbclient-navigation.jpg
+![SMB Navigation](images/15-smbclient-navigation.jpg)
+
+---
 
 ### 16. SMB File Operations
 
-images/16-smbclient-file-operations.jpg
+![SMB File Operations](images/16-smbclient-file-operations.jpg)
+
+---
 
 ### 17. SMB Access Validation
 
-images/17-smbclient-access-validation.jpg
+![SMB Access Validation](images/17-smbclient-access-validation.jpg)
 
 ---
 
@@ -350,21 +378,53 @@ images/17-smbclient-access-validation.jpg
 
 ---
 
+## Technical Skills Demonstrated
+
+### Windows Administration
+
+- Local User Management
+- SMB Share Configuration
+- Share Permission Management
+- NTFS Permission Configuration
+
+### Networking
+
+- SMB Protocol Operation
+- Client/Server Communication
+- Authentication Testing
+- Connectivity Validation
+
+### Linux Administration
+
+- smbclient Usage
+- Remote File Operations
+- SMB Troubleshooting
+
+### Security
+
+- Authentication
+- Authorization
+- Least Privilege Access
+- Access Control Validation
+- Permission Inheritance Analysis
+
+---
+
 ## Result
 
 Successfully deployed and validated a Windows-based SMB file-sharing solution using user-specific access controls and secure permission management.
 
-The environment was tested from Windows, Linux, and Android clients to verify authentication, authorization, and effective permission enforcement.
+Validated authentication, authorization, NTFS permissions, Share permissions, and cross-platform access from Linux and Android clients.
 
-This lab demonstrates practical experience with:
+### Skills Demonstrated
 
 - SMB Administration
 - Windows User Management
 - NTFS Permissions
 - Share Permissions
+- Authentication & Authorization
 - Access Control Design
 - Linux SMB Client Operations
 - Android SMB Connectivity
-- Authentication & Authorization
 - Infrastructure Troubleshooting
 - Cross-Platform File Sharing
